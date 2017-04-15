@@ -29,4 +29,12 @@ public class Person
     final SecureRandom random = new SecureRandom();
     return new BigInteger(130, random).toString(32);
   }
+
+  @Override public String toString()
+  {
+    return "Person{" +
+      "name='" + name + '\'' +
+      ", age=" + age +
+      '}';
+  }
 }
