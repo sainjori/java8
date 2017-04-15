@@ -1,2 +1,5 @@
 john 14
 mike 12
+hans 12
+anne 42
+renate 21

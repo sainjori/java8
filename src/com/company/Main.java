@@ -5,9 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.counting;
 
 public class Main
 {
@@ -41,5 +47,15 @@ public class Main
     }
     Stream<Person> stream = persons.stream();
 
+    Optional<Person> opt =
+      stream.filter(person -> person.getAge() >= 20)
+      .min(Comparator.comparing(Person::getAge));
+    System.out.println(opt);
+
+    Optional<Person> opt2 = persons.stream().max(Comparator.comparing(Person::getAge));
+      System.out.println(opt2);
+
+    Map<Integer, Long> map = persons.stream().collect(Collectors.groupingBy(Person::getAge, counting()));
+    System.out.println(map);
   }
 }
